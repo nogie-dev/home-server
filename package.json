@@ -1,0 +1,29 @@
+{
+  "name": "home-server",
+  "version": "1.0.0",
+  "description": "just home server",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nogie-dev/home-server.git"
+  },
+  "author": "nogie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nogie-dev/home-server/issues"
+  },
+  "homepage": "https://github.com/nogie-dev/home-server#readme",
+  "dependencies": {
+    "@types/jest": "^28.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
+}
