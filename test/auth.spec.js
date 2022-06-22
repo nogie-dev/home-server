@@ -1,13 +1,14 @@
 const jwt_auth=require("../middleware")
 const ticket_manage=require("../auth/jwt_manager")
+const token_manage=require("../auth/token_manager")
 
 describe("JWT 관리",()=>{
     describe("jwt Cookie 관리",()=>{
         it("로그인의 경우",()=>{
-            expect(ctx.cookies.get("ticket")).not.toBeUndefined()
+            expect(ctx.request.header.authorization).not.toBeUndefined()
         })
         it("비로그인의 경우",()=>{
-            expect(ctx.cookies.get("ticket")).toBeUndefined()
+            expect(ctx.request.header.authorization).toBeUndefined()
         })
     })
 
@@ -30,6 +31,18 @@ describe("JWT 관리",()=>{
 
         it("jwt Ticket Sign",()=>{
             expect(ticket_manage.make_ticket(meta_data,'secret',{expiration:meta_data.expiration})).not.toThrow()
+        })
+    })
+})
+
+describe("uuid-token-generator 관리",()=>{
+    describe("토큰 생성",()=>{
+        it("토큰이 존재해야 함",()=>{
+            expect(token_manage.genToken()).not.toBeNull
+
+            it("토큰 길이는 64글자",()=>{
+                expect(token_manage.genToken()).toHaveLength(64)
+            })
         })
     })
 })
